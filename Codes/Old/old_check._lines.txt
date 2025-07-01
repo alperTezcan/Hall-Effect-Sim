@@ -1,0 +1,36 @@
+"""
+def plot_energy_landscape(Happ, ThetaH, PhiH, Han, ThetaAn, PhiAn, Hd):
+    # Define the range of angles for the magnetization (ThetaM, PhiM)
+    theta_m_vals = np.linspace(0, np.pi, 100)
+    phi_m_vals = np.linspace(-np.pi, np.pi, 100)
+    
+    # Initialize an empty array to hold the energy values
+    energy_vals = np.zeros((len(theta_m_vals), len(phi_m_vals)))
+    
+    # Compute the energy for each combination of ThetaM and PhiM
+    for i, theta_m in enumerate(theta_m_vals):
+        for j, phi_m in enumerate(phi_m_vals):
+            energy_vals[i, j] = funEner(Happ, ThetaH, PhiH, theta_m, phi_m, Han, ThetaAn, PhiAn, Hd)
+    
+    # Plot the energy landscape
+    plt.figure(figsize=(10, 8))
+    plt.plot(phi_m_vals, energy_vals)
+    #plt.contourf(phi_m_vals, theta_m_vals, energy_vals, levels=100, cmap='viridis')
+    #plt.colorbar(label='Energy')
+    #plt.xlabel('PhiM (radians)')
+    #plt.ylabel('ThetaM (radians)')
+    plt.title('Energy Landscape')
+    plt.show()
+
+# Example usage with arbitrary values for the field and anisotropy parameters
+for Hcheck in np.arange(-1.5, 1.6, 0.1):
+    plot_energy_landscape(
+        Happ = Hcheck,  # Example applied field strength
+        ThetaH = 0,  # Example applied field angle ThetaH
+        PhiH = 0.0,  # Example applied field angle PhiH
+        Han = 0.5,  # Anisotropy field strength
+        ThetaAn = 0.01 * np.pi / 180,  # Anisotropy field angle ThetaAn
+        PhiAn = 10.0 * np.pi / 180,  # Anisotropy field angle PhiAn
+        Hd = 0.0  # Demagnetizing field
+    )
+"""
