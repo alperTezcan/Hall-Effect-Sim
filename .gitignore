@@ -1,0 +1,46 @@
+# === Ignore folders ===
+Sources/
+Report-Defenses/
+Outputs/
+
+# === Common Backup and Temporary Files ===
+*~
+*.bak
+*.tmp
+*.swp
+*.swo
+*.orig
+*.log
+*.aux
+*.out
+*.toc
+*.dvi
+*.idx
+*.bbl
+*.blg
+
+# === VSCode ===
+.vscode/
+*.code-workspace
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln
+
+# === Jupyter Notebooks Checkpoints ===
+.ipynb_checkpoints/
+
+# === macOS ===
+.DS_Store
+
+# === Python Bytecode ===
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.env
+
+# === Misc ===
+Thumbs.db
+ehthumbs.db
+desktop.ini
