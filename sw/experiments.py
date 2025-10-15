@@ -160,7 +160,6 @@ def plot_angle_scan(data: np.ndarray, *, angle_label: str) -> Figure:
         ax.plot(data[:, 0], data[:, col], marker="o", markerfacecolor="black", markeredgecolor="black", linestyle="-")
         ax.set_xlabel(angle_label)
         ax.set_ylabel(label)
-        ax.set_xlim(-1.1, 1.1)
         ax.set_ylim(-1.1, 1.1)
         ax.grid(True, alpha=0.3)
     fig.suptitle(f"Magnetization vs {angle_label} at fixed |H|")
