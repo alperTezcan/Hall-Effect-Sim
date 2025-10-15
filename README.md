@@ -1,34 +1,83 @@
+# Stoner-Wohlfarth (SW) Macrospin Simulations
+
+**Author:** Alper TEZCAN • PhD Track, Institut Polytechnique de Paris  
+**Advisors:** Prof. Jean‑Eric Wegrowe (supervisor), Valentin Desbuis (mentorship)  
+**License:** MIT (see `LICENSE`)
+
+This library implements fast, modular simulations of the Stoner-Wohlfarth model with multiple anisotropy terms and experiment helpers.
+
 ---
 
-Developed by **Alper TEZCAN**, January 2025
-PhD Track, Institut Polytechnique de Paris
+## Features
+
+- Core SW energy + numerical minimization (L‑BFGS‑B)
+- Anisotropy hierarchy:
+  - `Uniaxial` (single axis)
+  - `ManyUniaxial` (sum of multiple uniaxials)
+  - `Cubic` crystal anisotropy
+  - `Hexagonal` crystal anisotropy
+- Angle scans ((theta/phi)) and field sweeps (hysteresis)
+- Transport helpers: AMR / PHE / AHE, plus basic astroid utilities
+- Simple plotting utilities for quick inspection
+
+**Requirements:** Python >= 3.9, NumPy, SciPy, Matplotlib (see `pyproject.toml`).
 
 ---
 
-# Magnetic Anisotropy Simulations
+## Package Layout
 
-This repository contains simulation and data analysis tools developed to study and generalize the **Stoner-Wohlfarth model** for magnetic anisotropy, under the supervision of Prof. Jean-Eric Wegrowe and with the mentorship of Valentin Desbuis.
+```
+sw/
+  ├─ anisotropies.py   # Anisotropy hierarchy (Uniaxial, ManyUniaxial, Cubic, Hexagonal)
+  ├─ SW_model.py       # SWModel: energies, minimization, sweeps & scans
+  ├─ experiments.py    # Transport, switching/astroid, plotting helpers
+  └─ __init__.py       # Public API
+examples/
+  └─ run_demo.py
+pyproject.toml
+README.md
+LICENSE
+```
 
-## 📁 Project Structure
+---
 
-- **Codes/**  
-  Contains the main simulation and analysis codebase.
-  - Newer versions are modular and object-oriented, structured as a Python library compatible with Jupyter Notebooks.
-  - Older versions are stored in `Codes/Old/`, and follow a single-script, linear style for prototyping purposes.
+## API Highlights
 
-- **Data/**  
-  Contains experimental measurement data provided by Valentin. These are used for comparison and validation against simulation results.
+- **Anisotropies**
+  - `Uniaxial(Han, u)` — with `axis_from_degrees(Han, theta_deg, phi_deg)` helper
+  - `ManyUniaxial(Han_list=[...], u_list=[...])` or `ManyUniaxial(terms=[Uniaxial(...), ...])`
+  - `Cubic(K1, K2=0.0, R=None)` — energy in the **crystal frame** (`a = R @ M`)
+  - `Hexagonal(K1, K2=0.0, K6=0.0, R=None)` — uses (theta, phi) in the crystal frame
+  - `euler_zyx(z, y, x)` — build rotation matrix mapping **LAB → CRYSTAL**
 
-## ⚙️ Features
+- **SW_model**
+  - `SWModel(axes, Hd=0.0)`
+  - `hysteresis(theta_H, phi_H, H_values)`
+  - `angle_scan_theta(H, phi_H, thetas)` / `angle_scan_phi(H, theta_H, phis)`
 
-- Simulation of magnetic field and angle sweep experiments
-- Support for multiple uniaxial and crystalline anisotropies (e.g., cubic, tetragonal, hexagonal)
-- Visualization of magnetization curves and Stoner-Wohlfarth asteroids
-- Energy minimization and comparison with experimental Hall effect data
-- Basic data analysis tools using `numpy`, `pandas`, and Jupyter Notebooks
+- **Experiments**
+  - `hall_effects(...)` / `hall_from_angle_scan(...)`
+  - `switching_fields(...)`, `astroid_*` helpers
+  - `plot_hysteresis(...)`, `plot_angle_scan(...)`, `plot_halls(...)`
 
-## 🧠 Future Plans
+---
 
-- Rewriting core simulation components in C++ for performance (ROOT framework)
-- Advanced anisotropy extraction using machine learning
-- Integration of transport phenomena and extended material systems
+## Citing
+
+If this software assists your research, please cite it. Example BibTeX:
+
+```bibtex
+@software{tezcan_stoner_wohlfarth_2025,
+  author  = {Alper Tezcan},
+  title   = {Stoner-Wohlfarth Macrospin Simulations},
+  year    = {2025},
+  version = {2.0.0},
+  url     = {https://github.com/your-org-or-user/stoner-wohlfarth}
+}
+```
+
+---
+
+## Contributing
+
+Pull requests and issues are welcome. Please include a minimal failing example if you report a bug.
