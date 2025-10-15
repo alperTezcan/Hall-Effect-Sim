@@ -1,0 +1,27 @@
+[project]
+name = "stoner-wohlfarth"
+version = "2.0.0"
+authors = [{ name = "Alper TEZCAN" }]
+description = "Stoner-Wohlfarth macrospin simulations with uniaxial, many-uniaxial, and magnetocrystalline anisotropies."
+requires-python = ">=3.9"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENSE" }
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "matplotlib>=3.6",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["sw"]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "ruff>=0.4",   # or black/isort if you prefer
+  "mypy>=1.7",   # only if you enforce typing in the advanced build
+]
