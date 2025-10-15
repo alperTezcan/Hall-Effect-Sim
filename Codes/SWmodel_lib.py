@@ -321,9 +321,13 @@ class SWmodel:
         ast3D_phi = FuncAnimation(fig, rotate_phi, frames=np.arange(0, 360, 2), interval=100)
         ast3D_theta = FuncAnimation(fig, rotate_theta, frames=np.arange(0, 180, 2), interval=100)
 
-        
+        # for direct execution thru pyton scripts
+        ast3D_phi.save(os.path.join(self.output_dir,'3d_rotation_phi.mp4'), writer='ffmpeg')
+        ast3D_theta.save(os.path.join(self.output_dir,'3d_rotation_theta.mp4'), writer='ffmpeg')        
+        plt.savefig(os.path.join(self.output_dir, f"asteroid_3d.png"))
+        plt.close()
+
         # Display animations inline in Jupyter Notebook
-        display(HTML(ast3D_phi.to_jshtml()))  # Show azimuth rotation animation
-        display(HTML(ast3D_theta.to_jshtml()))  # Show elevation rotation animation
-        
-        plt.show()    
+        # display(HTML(ast3D_phi.to_jshtml()))  # Show azimuth rotation animation
+        # display(HTML(ast3D_theta.to_jshtml()))  # Show elevation rotation animation
+        # plt.show()
