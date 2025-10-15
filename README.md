@@ -1,7 +1,7 @@
 # Stoner-Wohlfarth (SW) Macrospin Simulations
 
 **Author:** Alper TEZCAN • PhD Track, Institut Polytechnique de Paris  
-**Advisors:** Prof. Jean‑Eric Wegrowe (supervisor), Valentin Desbuis (mentorship)  
+**Advisors:** Prof. Jean‑Eric Wegrowe (supervisor), Dr. Valentin Desbuis (mentorship)  
 **License:** MIT (see `LICENSE`)
 
 This library implements fast, modular simulations of the Stoner-Wohlfarth model with multiple anisotropy terms and experiment helpers.
