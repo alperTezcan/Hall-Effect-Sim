@@ -28,12 +28,16 @@ This library implements fast, modular simulations of the Stoner-Wohlfarth model 
 
 ```
 sw/
-  ├─ anisotropies.py   # Anisotropy hierarchy (Uniaxial, ManyUniaxial, Cubic, Hexagonal)
-  ├─ SW_model.py       # SWModel: energies, minimization, sweeps & scans
-  ├─ experiments.py    # Transport, switching/astroid, plotting helpers
-  └─ __init__.py       # Public API
+  ├─ anisotropies.py      # Anisotropy hierarchy (Uniaxial, ManyUniaxial, Cubic, Hexagonal)
+  ├─ SW_model.py          # SWModel: energies, minimization, sweeps & scans
+  ├─ experiments.py       # Transport, switching/astroid, plotting helpers
+  └─ __init__.py          # Public API
 examples/
-  └─ run_demo.py
+  ├─ Uniaxial.py          # Examples with Uniaxial anisotropy
+  |   ├─ Field-sweep.py   # +H --> -H --> +H experiment
+  |   ├─ Astroid.py       # SW astroid experiment
+  |   └─ Angle-scan.py    # theta/phi scan at fixed H experiment
+  └─ generic_demo.py
 pyproject.toml
 README.md
 LICENSE
@@ -72,7 +76,7 @@ If this software assists your research, please cite it. Example BibTeX:
   title   = {Stoner-Wohlfarth Macrospin Simulations},
   year    = {2025},
   version = {2.0.0},
-  url     = {https://github.com/your-org-or-user/stoner-wohlfarth}
+  url     = {https://github.com/alperTezcan/Hall-Effect-Sim}
 }
 ```
 
