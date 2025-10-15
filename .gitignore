@@ -2,7 +2,7 @@
 Sources/
 Report-Defenses/
 Outputs/
-*/plots/*
+plots/
 
 # === Common Backup and Temporary Files ===
 *~
