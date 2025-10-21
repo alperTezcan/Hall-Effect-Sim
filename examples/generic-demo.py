@@ -7,10 +7,11 @@ import sys, pathlib
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[1]))
 
 from sw import (
-    SWModel, Uniaxial, axis_from_degrees,
+    SWModel, axis_from_degrees,
+    Uniaxial, ManyUniaxial, Hexagonal, Cubic, 
     hall_effects, hall_from_angle_scan,
     plot_hysteresis, plot_angle_scan, plot_halls,
-    astroid_theta_scan,
+    astroid_theta_scan, astroid_phi_scan, astroid_3d
 )
 
 def main():
